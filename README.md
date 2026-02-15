@@ -66,7 +66,7 @@ Si desea replicar el entorno de ejecución, siga estos pasos:
 
 ## 🔑 Credenciales de Prueba (Staff)
 * **Usuario:** `admin`
-* **Contraseña:** `admin123`
+* **Contraseña:** `password`
 
 ---
 
