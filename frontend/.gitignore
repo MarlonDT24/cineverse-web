@@ -1,10 +1,15 @@
-# --- FRONTEND (React) ---
+# dependencies
 node_modules/
-/frontend/node_modules/
-/frontend/build/
-/frontend/.pnp
-/frontend/.pnp.js
-/frontend/coverage
+/.pnp
+.pnp.js
+
+# testing
+/coverage
+
+# production
+/build
+
+# misc
 .env.local
 .env.development.local
 .env.test.local
@@ -12,26 +17,3 @@ node_modules/
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-
-# --- BACKEND (Spring Boot / Maven) ---
-target/
-/backend/target/
-*.jar
-*.war
-*.zip
-*.tar.gz
-*.rar
-
-# --- IDEs y SYSTEM ---
-.idea/
-/backend/.idea/
-*.iml
-.vscode/
-/frontend/.vscode/
-.DS_Store
-Thumbs.db
-.claude/
-
-# --- DATABASE ---
-*.sql.gz
-*.sql.zip
