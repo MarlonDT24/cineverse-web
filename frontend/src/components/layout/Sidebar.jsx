@@ -6,11 +6,12 @@ import {
   Building2,
   CalendarDays,
   MessageSquare,
+  Ticket,
   LogOut,
 } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext';
 import { useChat } from '../../context/ChatContext';
-import { ROUTES } from '../../lib/constants';
+import { STAFF_NAV_ITEMS, CLIENT_NAV_ITEMS } from '../../lib/constants';
 
 const iconMap = {
   LayoutDashboard,
@@ -18,19 +19,21 @@ const iconMap = {
   Building2,
   CalendarDays,
   MessageSquare,
+  Ticket,
 };
-
-const navItems = [
-  { path: ROUTES.DASHBOARD, label: 'Dashboard', icon: 'LayoutDashboard' },
-  { path: ROUTES.MOVIES, label: 'Películas', icon: 'Film' },
-  { path: ROUTES.CINEMAS, label: 'Salas', icon: 'Building2' },
-  { path: ROUTES.SESSIONS, label: 'Sesiones', icon: 'CalendarDays' },
-  { path: ROUTES.CHAT, label: 'Chat', icon: 'MessageSquare' },
-];
 
 export default function Sidebar({ className = '' }) {
   const { user, logout } = useAuth();
   const { totalUnread } = useChat();
+
+  const isClient = user?.role === 'client';
+  const navItems = isClient ? CLIENT_NAV_ITEMS : STAFF_NAV_ITEMS;
+
+  const roleBadge = user?.role === 'admin'
+    ? 'Admin Panel'
+    : isClient
+      ? 'Mi CineVerse'
+      : 'Staff Portal';
 
   const initials = user?.name
     ?.split(' ')
@@ -53,7 +56,7 @@ export default function Sidebar({ className = '' }) {
               CineVerse
             </h1>
             <span className="text-[10px] uppercase tracking-widest text-text-muted">
-              {user?.role === 'admin' ? 'Admin Panel' : 'Staff Portal'}
+              {roleBadge}
             </span>
           </div>
         </div>
