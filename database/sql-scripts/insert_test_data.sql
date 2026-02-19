@@ -3,7 +3,7 @@
 USE cineverse_db;
 
 -- ============================================================
--- INSERTAR USUARIOS
+-- USUARIOS
 -- ============================================================
 INSERT INTO users (username, email, password, first_name, last_name, phone, role) VALUES
 -- Administradores
@@ -19,7 +19,7 @@ INSERT INTO users (username, email, password, first_name, last_name, phone, role
 ('cliente3', 'cliente3@gmail.com', '$2a$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'Pedro', 'Martín', '666111003', 'CLIENT');
 
 -- ============================================================
--- INSERTAR PELÍCULAS
+-- PELÍCULAS
 -- ============================================================
 INSERT INTO movies (title, original_title, description, duration_minutes, genre, director, actors, release_date, rating) VALUES
 ('Avatar: El Camino del Agua', 'Avatar: The Way of Water', 'Jake Sully vive con su nueva familia formada en el planeta Pandora. Cuando una amenaza familiar regresa para terminar lo que se empezó anteriormente, Jake debe trabajar con Neytiri y el ejército de la raza Navi para proteger su planeta.', 192, 'Ciencia ficción', 'James Cameron', 'Sam Worthington, Zoe Saldana, Sigourney Weaver', '2022-12-16', 7.8),
@@ -35,7 +35,7 @@ INSERT INTO movies (title, original_title, description, duration_minutes, genre,
 ('Minions: El Origen de Gru', 'Minions: The Rise of Gru', 'En los años 70, Gru crece siendo un gran admirador de un grupo de supervillanos conocidos como Vicious 6. Para demostrar que puede ser malvado, Gru idea un plan para formar parte del grupo.', 87, 'Animación', 'Kyle Balda', 'Steve Carell, Pierre Coffin, Alan Arkin', '2022-07-01', 6.5);
 
 -- ============================================================
--- INSERTAR SALAS DE CINE
+-- SALAS DE CINE
 -- ============================================================
 INSERT INTO cinemas (name, total_seats, rows_count, seats_per_row, screen_type) VALUES
 ('Sala 1 - Pantalla Grande', 120, 10, 12, '2D'),
@@ -44,7 +44,7 @@ INSERT INTO cinemas (name, total_seats, rows_count, seats_per_row, screen_type) 
 ('Sala 4 - Familiar', 80, 8, 10, '2D');
 
 -- ============================================================
--- INSERTAR BUTACAS (Ejemplo para Sala 1)
+-- BUTACAS
 -- ============================================================
 INSERT INTO seats (cinema_id, row_letter, seat_number, seat_type)
 SELECT 
@@ -65,7 +65,7 @@ CROSS JOIN
      UNION SELECT 11 UNION SELECT 12) s;
 
 -- ============================================================
--- INSERTAR SESIONES (Horarios)
+-- SESIONES (Horarios)
 -- ============================================================
 INSERT INTO sessions (movie_id, cinema_id, session_datetime, price_normal, price_vip, available_seats) VALUES
 -- Avatar - Hoy y mañana
@@ -89,7 +89,7 @@ INSERT INTO sessions (movie_id, cinema_id, session_datetime, price_normal, price
 (4, 1, '2025-02-04 20:00:00', 8.50, 12.00, 120);
 
 -- ============================================================
--- INSERTAR RESERVAS DE EJEMPLO
+-- RESERVAS
 -- ============================================================
 INSERT INTO bookings (user_id, session_id, total_amount, booking_code, status, payment_method) VALUES
 (4, 1, 17.00, 'CV2025020300001', 'CONFIRMED', 'DIGITAL'),
@@ -97,14 +97,14 @@ INSERT INTO bookings (user_id, session_id, total_amount, booking_code, status, p
 (6, 3, 8.50, 'CV2025020300003', 'PENDING', 'DIGITAL');
 
 -- ============================================================
--- INSERTAR CONVERSACIONES DE CHAT
+-- CONVERSACIONES DE CHAT
 -- ============================================================
 INSERT INTO chat_conversations (user_id, employee_id, status) VALUES
 (4, 2, 'OPEN'),
 (5, 2, 'CLOSED');
 
 -- ============================================================
--- INSERTAR MENSAJES DE CHAT
+-- MENSAJES DE CHAT
 -- ============================================================
 INSERT INTO chat_messages (conversation_id, sender_id, message) VALUES
 (1, 4, 'Hola, tengo un problema con mi reserva'),
@@ -118,7 +118,7 @@ INSERT INTO chat_messages (conversation_id, sender_id, message) VALUES
 (2, 2, 'Hecho! Te he cambiado la entrada. Recibirás confirmación por email');
 
 -- ============================================================
--- INSERTAR EVENTOS STAR WARS
+-- EVENTOS STAR WARS
 -- ============================================================
 INSERT INTO star_wars_events (swapi_id, title, description, character_name, event_date) VALUES
 ('1', 'Noche Luke Skywalker', 'Evento especial dedicado al héroe de la galaxia', 'Luke Skywalker', '2025-02-14'),
