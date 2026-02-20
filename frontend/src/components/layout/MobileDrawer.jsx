@@ -2,16 +2,18 @@ import { useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import {
   X,
-  Clapperboard,
   LayoutDashboard,
   Film,
   Building2,
   CalendarDays,
   MessageSquare,
   Ticket,
+  Sun,
+  Moon,
 } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext';
 import { useChat } from '../../context/ChatContext';
+import { useTheme } from '../../context/ThemeContext';
 import { STAFF_NAV_ITEMS, CLIENT_NAV_ITEMS } from '../../lib/constants';
 
 const iconMap = {
@@ -26,6 +28,7 @@ const iconMap = {
 export default function MobileDrawer({ open, onClose }) {
   const { user } = useAuth();
   const { totalUnread } = useChat();
+  const { theme, toggleTheme } = useTheme();
 
   const isClient = user?.role === 'client';
   const navItems = isClient ? CLIENT_NAV_ITEMS : STAFF_NAV_ITEMS;
@@ -68,19 +71,23 @@ export default function MobileDrawer({ open, onClose }) {
         aria-label="Menú de navegación"
       >
         <div className="p-5 border-b border-border flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <Clapperboard size={22} className="text-primary" />
-            <span className="font-bold text-lg bg-gradient-to-r from-coral to-teal bg-clip-text text-transparent">
-              CineVerse
-            </span>
+          <img src="/logo_cineverse.png" alt="CineVerse logo" className="h-10 w-auto max-w-[150px] object-contain" />
+          <div className="flex items-center gap-1">
+            <button
+              onClick={toggleTheme}
+              className="p-2 rounded-lg bg-transparent border-none cursor-pointer text-text-muted hover:text-primary hover:bg-primary/10 transition-colors"
+              aria-label={theme === 'dark' ? 'Cambiar a modo claro' : 'Cambiar a modo oscuro'}
+            >
+              {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
+            </button>
+            <button
+              onClick={onClose}
+              className="p-2 rounded-lg bg-transparent border-none cursor-pointer text-text-muted hover:text-white transition-colors"
+              aria-label="Cerrar menú"
+            >
+              <X size={20} />
+            </button>
           </div>
-          <button
-            onClick={onClose}
-            className="p-2 rounded-lg bg-transparent border-none cursor-pointer text-text-muted hover:text-white transition-colors"
-            aria-label="Cerrar menú"
-          >
-            <X size={20} />
-          </button>
         </div>
 
         <nav className="p-4 flex flex-col gap-1">

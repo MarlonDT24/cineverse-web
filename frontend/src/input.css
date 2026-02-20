@@ -1,9 +1,10 @@
 @import "tailwindcss";
 
 @theme {
-  --color-primary: #4fc3f7;
-  --color-primary-hover: #29b6f6;
-  --color-coral: #ff6b6b;
+  /* ─── Dark mode (default) ─── */
+  --color-primary: #f05151;
+  --color-primary-hover: #d94444;
+  --color-coral: #be1919;
   --color-teal: #4ecdc4;
   --color-sky: #45b7d1;
   --color-gold: #f9ca24;
@@ -18,20 +19,41 @@
   --color-3d: #66bb6a;
   --color-vip: #ffd700;
   --color-disabled-seat: #9c27b0;
-  --color-gradient-start: #0f1b3d;
-  --color-gradient-end: #1a3a6e;
+  --color-gradient-start: #030507;
+  --color-gradient-end: #0d1117;
 
   --color-surface: rgba(255, 255, 255, 0.08);
   --color-surface-hover: rgba(255, 255, 255, 0.14);
   --color-surface-active: rgba(255, 255, 255, 0.20);
   --color-border: rgba(255, 255, 255, 0.12);
   --color-border-hover: rgba(255, 255, 255, 0.25);
-  --color-text-primary: rgba(255, 255, 255, 0.95);
-  --color-text-secondary: rgba(255, 255, 255, 0.70);
-  --color-text-muted: rgba(255, 255, 255, 0.45);
+  --color-text-primary: #d6def0;
+  --color-text-secondary: rgba(214, 222, 240, 0.70);
+  --color-text-muted: rgba(214, 222, 240, 0.45);
 
   --color-sidebar-bg: rgba(0, 0, 0, 0.45);
-  --color-nav-active: rgba(79, 195, 247, 0.15);
+  --color-nav-active: rgba(240, 81, 81, 0.15);
+}
+
+/* ─── Light mode overrides ─── */
+.light {
+  --color-primary: #ae0f0f;
+  --color-primary-hover: #8b0c0c;
+  --color-coral: #e64141;
+  --color-gradient-start: #f8fafc;
+  --color-gradient-end: #eef1f5;
+
+  --color-surface: rgba(0, 0, 0, 0.05);
+  --color-surface-hover: rgba(0, 0, 0, 0.08);
+  --color-surface-active: rgba(0, 0, 0, 0.12);
+  --color-border: rgba(0, 0, 0, 0.12);
+  --color-border-hover: rgba(0, 0, 0, 0.25);
+  --color-text-primary: #0f1729;
+  --color-text-secondary: rgba(15, 23, 41, 0.70);
+  --color-text-muted: rgba(15, 23, 41, 0.45);
+
+  --color-sidebar-bg: rgba(255, 255, 255, 0.80);
+  --color-nav-active: rgba(174, 15, 15, 0.10);
 }
 
 @keyframes shimmer {
@@ -46,13 +68,53 @@
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background: linear-gradient(135deg, var(--color-gradient-start) 0%, var(--color-gradient-end) 100%);
   color: var(--color-text-primary);
   min-height: 100vh;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+/* ─── Light mode overrides for hardcoded colors ─── */
+.light .text-white {
+  color: var(--color-text-primary);
+}
+
+.light .hover\:text-white:hover {
+  color: var(--color-text-primary);
+}
+
+.light .bg-gray-900\/95 {
+  background-color: rgba(255, 255, 255, 0.95);
+}
+
+.light .bg-white\/10 {
+  background-color: rgba(0, 0, 0, 0.06);
+}
+
+.light .hover\:bg-white\/20:hover {
+  background-color: rgba(0, 0, 0, 0.10);
+}
+
+.light .hover\:bg-white\/30:hover {
+  background-color: rgba(0, 0, 0, 0.12);
+}
+
+.light .bg-white\/60 {
+  background-color: rgba(0, 0, 0, 0.06);
+}
+
+.light .text-gray-900 {
+  color: #ffffff;
+}
+
+.light .hover\:text-gray-900:hover {
+  color: #ffffff;
 }
 
 :focus-visible {
@@ -69,10 +131,10 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.15);
+  background: rgba(128, 128, 128, 0.3);
   border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(255, 255, 255, 0.3);
+  background: rgba(128, 128, 128, 0.5);
 }

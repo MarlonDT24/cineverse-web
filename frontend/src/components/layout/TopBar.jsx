@@ -1,4 +1,4 @@
-import { Menu, Clapperboard, LogOut } from 'lucide-react';
+import { Menu, LogOut } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext';
 
 export default function TopBar({ onMenuClick }) {
@@ -21,10 +21,7 @@ export default function TopBar({ onMenuClick }) {
         <Menu size={22} />
       </button>
 
-      <div className="flex items-center gap-2">
-        <Clapperboard size={20} className="text-primary" />
-        <span className="font-bold text-white">CineVerse</span>
-      </div>
+      <img src="/logo_cineverse.png" alt="CineVerse logo" className="h-12 w-auto max-w-[110px] object-contain" />
 
       <div className="flex items-center gap-2">
         <div className="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center text-xs font-bold text-primary">

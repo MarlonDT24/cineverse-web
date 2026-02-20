@@ -1,4 +1,5 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { ThemeProvider } from './context/ThemeContext';
 import { AuthProvider } from './context/AuthContext';
 import { DataProvider } from './context/DataContext';
 import ProtectedRoute from './components/layout/ProtectedRoute';
@@ -16,6 +17,7 @@ import ClientSessionsPage from './pages/ClientSessionsPage';
 
 export default function App() {
   return (
+    <ThemeProvider>
     <BrowserRouter>
       <AuthProvider>
         <DataProvider>
@@ -47,5 +49,6 @@ export default function App() {
         </DataProvider>
       </AuthProvider>
     </BrowserRouter>
+    </ThemeProvider>
   );
 }
