@@ -8,6 +8,7 @@ import { formatDuration } from '../lib/formatters';
 import { GENRES } from '../lib/constants';
 import GlassCard from '../components/ui/GlassCard';
 import IconButton from '../components/ui/IconButton';
+import MoviePoster from '../components/ui/MoviePoster';
 import FormField from '../components/ui/FormField';
 import Modal from '../components/ui/Modal';
 
@@ -116,33 +117,36 @@ export default function MoviesPage() {
 
       <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
         {movies.map((movie) => (
-          <GlassCard key={movie.id} hover className="p-5">
-            <div className="flex justify-between items-start mb-3">
-              <h3 className="m-0 text-base font-semibold flex-1 pr-2">{movie.title}</h3>
-              <div className="flex gap-1.5">
-                <IconButton icon={Pencil} label="Editar" variant="warning" onClick={() => handleEdit(movie)} size={15} />
-                <IconButton icon={Trash2} label="Eliminar" variant="danger" onClick={() => setDeleteTarget(movie.id)} size={15} />
+          <GlassCard key={movie.id} hover className="overflow-hidden">
+            <MoviePoster src={movie.poster_url} alt={movie.title} />
+            <div className="p-5">
+              <div className="flex justify-between items-start mb-3">
+                <h3 className="m-0 text-base font-semibold flex-1 pr-2">{movie.title}</h3>
+                <div className="flex gap-1.5">
+                  <IconButton icon={Pencil} label="Editar" variant="warning" onClick={() => handleEdit(movie)} size={15} />
+                  <IconButton icon={Trash2} label="Eliminar" variant="danger" onClick={() => setDeleteTarget(movie.id)} size={15} />
+                </div>
               </div>
-            </div>
-            {movie.original_title !== movie.title && (
-              <p className="text-xs text-text-muted italic m-0 mb-2">{movie.original_title}</p>
-            )}
-            <p className="text-sm text-text-secondary leading-relaxed line-clamp-3 mb-3">{movie.description}</p>
-            <div className="flex flex-wrap gap-2 mb-3">
-              <span className="inline-flex items-center gap-1 bg-surface px-2.5 py-1 rounded-full text-xs text-text-secondary">
-                <Clock size={12} /> {formatDuration(movie.duration_minutes)}
-              </span>
-              <span className="inline-flex items-center gap-1 bg-surface px-2.5 py-1 rounded-full text-xs text-text-secondary">
-                <Tag size={12} /> {movie.genre}
-              </span>
-              <span className="inline-flex items-center gap-1 bg-surface px-2.5 py-1 rounded-full text-xs text-text-secondary">
-                <Star size={12} /> {movie.rating}/10
-              </span>
-            </div>
-            <div className="space-y-1 text-xs text-text-muted">
-              <p className="m-0 flex items-center gap-1.5"><Clapperboard size={12} /> {movie.director}</p>
-              <p className="m-0 flex items-center gap-1.5"><Users size={12} /> {movie.actors}</p>
-              <p className="m-0 flex items-center gap-1.5"><Calendar size={12} /> {movie.release_date}</p>
+              {movie.original_title !== movie.title && (
+                <p className="text-xs text-text-muted italic m-0 mb-2">{movie.original_title}</p>
+              )}
+              <p className="text-sm text-text-secondary leading-relaxed line-clamp-3 mb-3">{movie.description}</p>
+              <div className="flex flex-wrap gap-2 mb-3">
+                <span className="inline-flex items-center gap-1 bg-surface px-2.5 py-1 rounded-full text-xs text-text-secondary">
+                  <Clock size={12} /> {formatDuration(movie.duration_minutes)}
+                </span>
+                <span className="inline-flex items-center gap-1 bg-surface px-2.5 py-1 rounded-full text-xs text-text-secondary">
+                  <Tag size={12} /> {movie.genre}
+                </span>
+                <span className="inline-flex items-center gap-1 bg-surface px-2.5 py-1 rounded-full text-xs text-text-secondary">
+                  <Star size={12} /> {movie.rating}/10
+                </span>
+              </div>
+              <div className="space-y-1 text-xs text-text-muted">
+                <p className="m-0 flex items-center gap-1.5"><Clapperboard size={12} /> {movie.director}</p>
+                <p className="m-0 flex items-center gap-1.5"><Users size={12} /> {movie.actors}</p>
+                <p className="m-0 flex items-center gap-1.5"><Calendar size={12} /> {movie.release_date}</p>
+              </div>
             </div>
           </GlassCard>
         ))}

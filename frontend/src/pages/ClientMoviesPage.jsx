@@ -6,6 +6,7 @@ import { useMovies } from '../hooks/useMovies';
 import { formatDuration } from '../lib/formatters';
 import { GENRES } from '../lib/constants';
 import GlassCard from '../components/ui/GlassCard';
+import MoviePoster from '../components/ui/MoviePoster';
 
 export default function ClientMoviesPage() {
   const { movies } = useMovies();
@@ -60,44 +61,47 @@ export default function ClientMoviesPage() {
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
           {filtered.map((movie) => (
-            <GlassCard key={movie.id} hover className="p-5">
-              <div className="mb-3">
-                <h3 className="m-0 text-base font-semibold">{movie.title}</h3>
-                {movie.original_title && movie.original_title !== movie.title && (
-                  <p className="text-xs text-text-muted italic m-0 mt-1">{movie.original_title}</p>
+            <GlassCard key={movie.id} hover className="overflow-hidden">
+              <MoviePoster src={movie.poster_url} alt={movie.title} />
+              <div className="p-5">
+                <div className="mb-3">
+                  <h3 className="m-0 text-base font-semibold">{movie.title}</h3>
+                  {movie.original_title && movie.original_title !== movie.title && (
+                    <p className="text-xs text-text-muted italic m-0 mt-1">{movie.original_title}</p>
+                  )}
+                </div>
+
+                {movie.description && (
+                  <p className="text-sm text-text-secondary leading-relaxed line-clamp-3 mb-3">{movie.description}</p>
                 )}
-              </div>
 
-              {movie.description && (
-                <p className="text-sm text-text-secondary leading-relaxed line-clamp-3 mb-3">{movie.description}</p>
-              )}
-
-              <div className="flex flex-wrap gap-2 mb-3">
-                <span className="inline-flex items-center gap-1 bg-surface px-2.5 py-1 rounded-full text-xs text-text-secondary">
-                  <Clock size={12} /> {formatDuration(movie.duration_minutes)}
-                </span>
-                {movie.genre && (
+                <div className="flex flex-wrap gap-2 mb-3">
                   <span className="inline-flex items-center gap-1 bg-surface px-2.5 py-1 rounded-full text-xs text-text-secondary">
-                    <Tag size={12} /> {movie.genre}
+                    <Clock size={12} /> {formatDuration(movie.duration_minutes)}
                   </span>
-                )}
-                {movie.rating > 0 && (
-                  <span className="inline-flex items-center gap-1 bg-surface px-2.5 py-1 rounded-full text-xs text-text-secondary">
-                    <Star size={12} /> {movie.rating}/10
-                  </span>
-                )}
-              </div>
+                  {movie.genre && (
+                    <span className="inline-flex items-center gap-1 bg-surface px-2.5 py-1 rounded-full text-xs text-text-secondary">
+                      <Tag size={12} /> {movie.genre}
+                    </span>
+                  )}
+                  {movie.rating > 0 && (
+                    <span className="inline-flex items-center gap-1 bg-surface px-2.5 py-1 rounded-full text-xs text-text-secondary">
+                      <Star size={12} /> {movie.rating}/10
+                    </span>
+                  )}
+                </div>
 
-              <div className="space-y-1 text-xs text-text-muted">
-                {movie.director && (
-                  <p className="m-0 flex items-center gap-1.5"><Clapperboard size={12} /> {movie.director}</p>
-                )}
-                {movie.actors && (
-                  <p className="m-0 flex items-center gap-1.5"><Users size={12} /> {movie.actors}</p>
-                )}
-                {movie.release_date && (
-                  <p className="m-0 flex items-center gap-1.5"><Calendar size={12} /> {movie.release_date}</p>
-                )}
+                <div className="space-y-1 text-xs text-text-muted">
+                  {movie.director && (
+                    <p className="m-0 flex items-center gap-1.5"><Clapperboard size={12} /> {movie.director}</p>
+                  )}
+                  {movie.actors && (
+                    <p className="m-0 flex items-center gap-1.5"><Users size={12} /> {movie.actors}</p>
+                  )}
+                  {movie.release_date && (
+                    <p className="m-0 flex items-center gap-1.5"><Calendar size={12} /> {movie.release_date}</p>
+                  )}
+                </div>
               </div>
             </GlassCard>
           ))}

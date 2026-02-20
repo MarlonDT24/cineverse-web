@@ -10,6 +10,7 @@ import { useAuth } from '../context/AuthContext';
 import { formatCurrency, formatDuration, calculateEndTime } from '../lib/formatters';
 import StatCard from '../components/ui/StatCard';
 import GlassCard from '../components/ui/GlassCard';
+import MoviePoster from '../components/ui/MoviePoster';
 
 const screenIcons = { '2D': Film, '3D': Glasses, IMAX: Monitor, '4DX': Sparkles };
 
@@ -92,26 +93,29 @@ function ClientDashboard({ user, movies, cinemas, sessions }) {
         ) : (
           <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4">
             {featuredMovies.map((movie) => (
-              <GlassCard key={movie.id} hover className="p-4">
-                <h3 className="m-0 text-sm font-semibold mb-1">{movie.title}</h3>
-                <div className="flex flex-wrap gap-1.5 mb-2">
-                  <span className="inline-flex items-center gap-1 bg-surface px-2 py-0.5 rounded-full text-[11px] text-text-secondary">
-                    <Clock size={10} /> {formatDuration(movie.duration_minutes)}
-                  </span>
-                  {movie.genre && (
+              <GlassCard key={movie.id} hover className="overflow-hidden">
+                <MoviePoster src={movie.poster_url} alt={movie.title} />
+                <div className="p-4">
+                  <h3 className="m-0 text-sm font-semibold mb-1">{movie.title}</h3>
+                  <div className="flex flex-wrap gap-1.5 mb-2">
                     <span className="inline-flex items-center gap-1 bg-surface px-2 py-0.5 rounded-full text-[11px] text-text-secondary">
-                      <Tag size={10} /> {movie.genre}
+                      <Clock size={10} /> {formatDuration(movie.duration_minutes)}
                     </span>
-                  )}
-                  {movie.rating > 0 && (
-                    <span className="inline-flex items-center gap-1 bg-surface px-2 py-0.5 rounded-full text-[11px] text-text-secondary">
-                      <Star size={10} /> {movie.rating}/10
-                    </span>
+                    {movie.genre && (
+                      <span className="inline-flex items-center gap-1 bg-surface px-2 py-0.5 rounded-full text-[11px] text-text-secondary">
+                        <Tag size={10} /> {movie.genre}
+                      </span>
+                    )}
+                    {movie.rating > 0 && (
+                      <span className="inline-flex items-center gap-1 bg-surface px-2 py-0.5 rounded-full text-[11px] text-text-secondary">
+                        <Star size={10} /> {movie.rating}/10
+                      </span>
+                    )}
+                  </div>
+                  {movie.description && (
+                    <p className="text-xs text-text-muted line-clamp-2 m-0">{movie.description}</p>
                   )}
                 </div>
-                {movie.description && (
-                  <p className="text-xs text-text-muted line-clamp-2 m-0">{movie.description}</p>
-                )}
               </GlassCard>
             ))}
           </div>
