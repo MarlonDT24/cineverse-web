@@ -51,7 +51,7 @@ export default function Sidebar({ className = '' }) {
     >
       <div className="px-4 py-3 border-b border-border">
         <div className="flex items-center gap-3 mb-2">
-          <img src="/logo_cineverse.png" alt="CineVerse logo" className="h-12 w-auto flex-1 object-contain" />
+          <img src="/logo_cineverse.png" alt="CineVerse logo" className="h-12 w-auto object-contain" />
           <button
             onClick={toggleTheme}
             className="p-2 rounded-lg bg-transparent border-none cursor-pointer text-text-muted hover:text-primary hover:bg-primary/10 transition-colors"
