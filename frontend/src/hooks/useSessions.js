@@ -78,8 +78,8 @@ export function useSessions() {
 
       try {
         const payload = {
-          movie_id: parseInt(formData.movie_id, 10),
-          cinema_id: parseInt(formData.cinema_id, 10),
+          movie: { id: parseInt(formData.movie_id, 10) },
+          cinema: { id: parseInt(formData.cinema_id, 10) },
           session_datetime: `${formData.date}T${formData.start_time}:00`,
           price_normal: parseFloat(formData.price_normal),
           price_vip: parseFloat(formData.price_vip),
