@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { ShieldCheck, AlertCircle } from "lucide-react";
-import { useAuth } from "../context/AuthContext";
-import { ROUTES } from "../lib/constants";
+import { useAuth } from "../../context/AuthContext";
+import { ROUTES } from "../../lib/constants";
 
 export default function LoginPage() {
   const [username, setUsername] = useState("");
@@ -90,7 +90,7 @@ export default function LoginPage() {
           <button
             type="submit"
             disabled={loading}
-            className="w-full py-3.5 bg-linear-to-r from-primary to-sky rounded-xl font-bold text-gray-900 text-base
+            className="w-full py-3.5 bg-primary rounded-xl font-bold text-gray-900 text-base
               shadow-lg transition-all duration-200 hover:shadow-primary/30 hover:scale-[1.02]
               focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary
               border-none cursor-pointer disabled:opacity-60 disabled:cursor-not-allowed disabled:hover:scale-100"

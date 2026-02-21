@@ -2,9 +2,9 @@ import { useState } from 'react';
 import {
   CalendarDays, Clock, Film, Building2, Search, Ticket,
 } from 'lucide-react';
-import { useSessions } from '../hooks/useSessions';
-import { formatCurrency, formatDuration, calculateEndTime } from '../lib/formatters';
-import GlassCard from '../components/ui/GlassCard';
+import { useSessions } from '../../hooks/useSessions';
+import { formatCurrency, formatDuration, calculateEndTime } from '../../lib/formatters';
+import GlassCard from '../../components/ui/GlassCard';
 
 export default function ClientSessionsPage() {
   const { sessions, movies, cinemas } = useSessions();

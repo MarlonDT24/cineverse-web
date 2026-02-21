@@ -5,15 +5,15 @@ import { DataProvider } from './context/DataContext';
 import ProtectedRoute from './components/layout/ProtectedRoute';
 import RoleRoute from './components/layout/RoleRoute';
 import AppLayout from './components/layout/AppLayout';
-import LoginPage from './pages/LoginPage';
-import DashboardPage from './pages/DashboardPage';
-import MoviesPage from './pages/MoviesPage';
-import CinemasPage from './pages/CinemasPage';
-import SessionsPage from './pages/SessionsPage';
-import ChatPage from './pages/ChatPage';
-import ClientMoviesPage from './pages/ClientMoviesPage';
-import ClientCinemasPage from './pages/ClientCinemasPage';
-import ClientSessionsPage from './pages/ClientSessionsPage';
+import LoginPage from './pages/auth/LoginPage';
+import DashboardPage from './pages/shared/DashboardPage';
+import ChatPage from './pages/shared/ChatPage';
+import MoviesPage from './pages/staff/MoviesPage';
+import CinemasPage from './pages/staff/CinemasPage';
+import SessionsPage from './pages/staff/SessionsPage';
+import ClientMoviesPage from './pages/client/ClientMoviesPage';
+import ClientCinemasPage from './pages/client/ClientCinemasPage';
+import ClientSessionsPage from './pages/client/ClientSessionsPage';
 
 export default function App() {
   return (

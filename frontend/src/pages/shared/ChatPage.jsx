@@ -1,9 +1,9 @@
 import { MessageSquare } from 'lucide-react';
-import { useChat } from '../hooks/useChat';
-import { useAuth } from '../context/AuthContext';
-import ConversationList from '../components/chat/ConversationList';
-import ChatWindow from '../components/chat/ChatWindow';
-import EmptyState from '../components/ui/EmptyState';
+import { useChat } from '../../hooks/useChat';
+import { useAuth } from '../../context/AuthContext';
+import ConversationList from '../../components/chat/ConversationList';
+import ChatWindow from '../../components/chat/ChatWindow';
+import EmptyState from '../../components/ui/EmptyState';
 
 export default function ChatPage() {
   const { user } = useAuth();

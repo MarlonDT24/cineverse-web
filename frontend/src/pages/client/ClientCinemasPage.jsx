@@ -2,11 +2,11 @@ import { useState } from 'react';
 import {
   Building2, Eye, MapPin, Film, Glasses, Monitor, Sparkles,
 } from 'lucide-react';
-import { useCinemas } from '../hooks/useCinemas';
-import { generateSeatMap } from '../lib/seatMapGenerator';
-import GlassCard from '../components/ui/GlassCard';
-import Badge from '../components/ui/Badge';
-import IconButton from '../components/ui/IconButton';
+import { useCinemas } from '../../hooks/useCinemas';
+import { generateSeatMap } from '../../lib/seatMapGenerator';
+import GlassCard from '../../components/ui/GlassCard';
+import Badge from '../../components/ui/Badge';
+import IconButton from '../../components/ui/IconButton';
 
 const screenIcons = { '2D': Film, '3D': Glasses, IMAX: Monitor, '4DX': Sparkles };
 

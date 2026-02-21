@@ -2,11 +2,11 @@ import { useState } from 'react';
 import {
   Film, Clock, Tag, Star, Clapperboard, Users, Calendar, Search,
 } from 'lucide-react';
-import { useMovies } from '../hooks/useMovies';
-import { formatDuration } from '../lib/formatters';
-import { GENRES } from '../lib/constants';
-import GlassCard from '../components/ui/GlassCard';
-import MoviePoster from '../components/ui/MoviePoster';
+import { useMovies } from '../../hooks/useMovies';
+import { formatDuration } from '../../lib/formatters';
+import { GENRES } from '../../lib/constants';
+import GlassCard from '../../components/ui/GlassCard';
+import MoviePoster from '../../components/ui/MoviePoster';
 
 export default function ClientMoviesPage() {
   const { movies } = useMovies();
