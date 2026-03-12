@@ -1,4 +1,4 @@
-# CineVerse - Sistema de Gestión Cinematográfica 🍿
+# CineVerse - Sistema de Gestión Cinematográfica
 
 **CineVerse** es una solución tecnológica integral diseñada para la administración de complejos de cine, desarrollada como Proyecto Final de Grado para el Ciclo Superior de **Desarrollo de Aplicaciones Multiplataforma (DAM) 2026**.
 
